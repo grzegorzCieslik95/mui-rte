@@ -224,6 +224,9 @@ const MUIRichTextEditor: RefForwardingComponent<any, IMUIRichTextEditorProps> = 
         focus: () => {
             handleFocus()
         },
+        blur: () => {
+            handleBlur()
+        },
         save: () => {
             handleSave()
         },
@@ -349,6 +352,12 @@ const MUIRichTextEditor: RefForwardingComponent<any, IMUIRichTextEditorProps> = 
     const handleSave = () => {
         if (props.onSave) {
             props.onSave(JSON.stringify(convertToRaw(editorState.getCurrentContent())))
+        }
+    }
+
+    const handleSave = () => {
+        if (props.blur) {
+            props.blur(JSON.stringify(convertToRaw(editorState.getCurrentContent())))
         }
     }
 
